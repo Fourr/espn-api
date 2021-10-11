@@ -1,7 +1,6 @@
 import schedule
 import time
 import SendMessage
-import GetDataFromESPN
 import GetESPNData
 
 def postdata(msg: str):
