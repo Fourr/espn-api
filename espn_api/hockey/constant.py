@@ -10,6 +10,11 @@ POSITION_MAP = {
     , 6 : '6' # Forward ?
     , 7 : '7' # Goalie, F (Goalie Bench?)
     , 8 : '8' # Goalie, F
+    , 'Center': 1
+    , 'Left Wing' : 2
+    , 'Right Wing' : 3
+    , 'Defense' : 4
+    , 'Goalie' : 5
 }
 
 STATS_IDENTIFIER = {
@@ -53,7 +58,7 @@ PRO_TEAM_MAP = {
     , 29: 'Columbus Blue Jackets'
     , 30: 'Minnesota Wild'
     , 37: 'Vegas Golden Knights'
-    , 124292: 'Seattle Krakens'
+    , 124292: 'Seattle Kraken'
 }
 
 STATS_MAP = {
