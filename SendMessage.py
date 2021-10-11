@@ -4,7 +4,7 @@ import json
 
 def send_discord_message(msg: str, channel_id: str = '<your channel id>'):
 
-    TOKEN = 'token'
+    TOKEN = 'you_token'
 
     # set all the required headers to make a request to discord end point api
     headers = {
