@@ -1,11 +1,13 @@
 from espn_api.football import League
 from decimal import *
+from typing import List
 
 def RetrieveData(msg: str):
 	league = League(league_id= 1082411793, year=2021, espn_s2 = 'AEBFYq2%2Bcr45uiDMebG2kPfWoI0QmsEEF66soC1%2FWQ%2FuA4j2LpOPLZDZNpbHmkAa44Es296hMr4pjbdf0Rx0NcLtc%2FhSlo8a%2B528y8QBOrUer5esCRJr00U84jMawcTgb1OFDng1Rzq7z6THAQz620%2FYoDvCPZcOxlqGtDBOM7sx0zXAVgrjfMmdU7al7m2HFRoK2SdIASD9WFObY1rm5vFnndeMSjCKWJJmli6Qx2Qkk%2FvpV%2FwzpoTE9tyfIvpM2JlUf4ZOSI2El9U72QzUW0xn0lYOcVPw9uIN1sOrmKXh5GU2mxeT%2F0HnvXwIKpt5QPfbR8R7Vuj1fMKJF6BgeIBX', swid = '{34271226-9219-4E25-AA2B-EB4F06085729}' )
 
 	if msg == "Final Scores" or msg == "Trophies":
 		league_scores = league.box_scores(week = league.current_week - 1)
+
 	else:
 		league_scores = league.box_scores()
 	message = "```" + msg + ":\n"
@@ -40,9 +42,14 @@ def RetrieveData(msg: str):
 	teams = {}
 	closescore = blowoutscore = 0
 	for x in league_scores:
+
+		teamOneLineUp = x.home_lineup
+		teamTwoLineUp = x.away_lineup
+
 		teamOne = x.home_team.team_name
 		teamTwo = x.away_team.team_name
-		if msg == "Projections":
+
+		if msg == "Projections" or msg == "Close Scores":
 			teamOneScore = x.home_projected
 			teamTwoScore = x.away_projected
 		else:
@@ -60,10 +67,9 @@ def RetrieveData(msg: str):
 
 
 		if msg == "Close Scores":
-			if abs(teamOneScore - teamTwoScore) <= 16:
+			if abs(teamOneScore - teamTwoScore) <= 16 and (NotEveryonePlayed(teamTwoLineUp) or NotEveryonePlayed(teamOneLineUp)):
 				message += teamOne + " (" + str(teamOneScore) + ") vs " + teamTwo + " (" + str(teamTwoScore) + ") \n"
 		elif msg == "Trophies": 
-
 			teams[teamOne] = teamOneScore
 			teams[teamTwo] = teamTwoScore
 			scorediff = Decimal(str(teamOneScore)) - Decimal(str(teamTwoScore))
@@ -103,4 +109,13 @@ def RetrieveData(msg: str):
 
 
 	return message
-print(RetrieveData("Final Scores"))
+
+
+
+def NotEveryonePlayed(team: List):
+	for x in team:
+		if(x.slot_position != "BE" and x.slot_position != "IR" and x.game_played == 0):	
+			return True
+	return False
+
+print(RetrieveData("Close Scores"))
