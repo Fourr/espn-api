@@ -118,4 +118,3 @@ def NotEveryonePlayed(team: List):
 			return True
 	return False
 
-print(RetrieveData("Close Scores"))
