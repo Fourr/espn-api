@@ -3,7 +3,7 @@ from decimal import *
 from typing import List
 
 def RetrieveData(msg: str):
-	league = League(league_id= 1082411793, year=2021, espn_s2 = 'AEBFYq2%2Bcr45uiDMebG2kPfWoI0QmsEEF66soC1%2FWQ%2FuA4j2LpOPLZDZNpbHmkAa44Es296hMr4pjbdf0Rx0NcLtc%2FhSlo8a%2B528y8QBOrUer5esCRJr00U84jMawcTgb1OFDng1Rzq7z6THAQz620%2FYoDvCPZcOxlqGtDBOM7sx0zXAVgrjfMmdU7al7m2HFRoK2SdIASD9WFObY1rm5vFnndeMSjCKWJJmli6Qx2Qkk%2FvpV%2FwzpoTE9tyfIvpM2JlUf4ZOSI2El9U72QzUW0xn0lYOcVPw9uIN1sOrmKXh5GU2mxeT%2F0HnvXwIKpt5QPfbR8R7Vuj1fMKJF6BgeIBX', swid = '{34271226-9219-4E25-AA2B-EB4F06085729}' )
+	league = League(league_id= 1082411793, year=2022, espn_s2 = 'AEBFYq2%2Bcr45uiDMebG2kPfWoI0QmsEEF66soC1%2FWQ%2FuA4j2LpOPLZDZNpbHmkAa44Es296hMr4pjbdf0Rx0NcLtc%2FhSlo8a%2B528y8QBOrUer5esCRJr00U84jMawcTgb1OFDng1Rzq7z6THAQz620%2FYoDvCPZcOxlqGtDBOM7sx0zXAVgrjfMmdU7al7m2HFRoK2SdIASD9WFObY1rm5vFnndeMSjCKWJJmli6Qx2Qkk%2FvpV%2FwzpoTE9tyfIvpM2JlUf4ZOSI2El9U72QzUW0xn0lYOcVPw9uIN1sOrmKXh5GU2mxeT%2F0HnvXwIKpt5QPfbR8R7Vuj1fMKJF6BgeIBX', swid = '{34271226-9219-4E25-AA2B-EB4F06085729}' )
 
 	if msg == "Final Scores" or msg == "Trophies":
 		league_scores = league.box_scores(week = league.current_week - 1)

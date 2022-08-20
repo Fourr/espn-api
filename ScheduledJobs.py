@@ -4,7 +4,7 @@ import SendMessage
 import GetESPNData
 
 def postdata(msg: str):
-    SendMessage.send_discord_message(GetESPNData.RetrieveData(msg),'889659224500609067')
+    SendMessage.send_discord_message(GetESPNData.RetrieveData(msg),'882785675181707276')
 
 schedule.every().sunday.at("16:00:00").do(postdata, msg = "Scores")
 schedule.every().sunday.at("16:00:01").do(postdata, msg = "Projections")
