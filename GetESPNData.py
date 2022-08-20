@@ -34,7 +34,7 @@ def RetrieveData(msg: str):
 
 	if msg == "Match Ups":
 		scoreboard = league.scoreboard()
-		printable_scoreboard = "```This Weeks Match Ups:\n"
+		printable_scoreboard = "```This Week's Match Ups:\n"
 		for x in scoreboard:
 			printable_scoreboard += x.home_team.team_name +  " (" + str(x.home_team.wins) +  " - " + str(x.home_team.losses) + ") vs " + x.away_team.team_name +  " (" + str(x.away_team.wins) +  " - " + str(x.away_team.losses) + ")\n"
 		printable_scoreboard += "```"

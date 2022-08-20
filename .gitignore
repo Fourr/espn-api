@@ -12,4 +12,5 @@ venv/
 build
 dist
 env
+post.py
 coverage*
