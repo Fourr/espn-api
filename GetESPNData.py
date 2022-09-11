@@ -27,7 +27,7 @@ def RetrieveData(msg: str):
 		printable_standings = "```Current Standings:\n" 
 		for x in standings:
 
-			printable_standings += str(y) + ": " + x.team_name +  " (" + str(x.wins) +  " - " + str(x.losses) + ") " + "Streak: " + x.streak_type + " " + str(x.streak_length) + "\n"
+			printable_standings += str(y) + ": " + x.team_name +  " (" + str(x.wins) +  " - " + str(x.losses) + ") " + "Streak: " + x.streak_type + " " + str(x.streak_length) + "\n\n"
 			y += 1
 		printable_standings += "```"
 		return printable_standings
@@ -36,7 +36,7 @@ def RetrieveData(msg: str):
 		scoreboard = league.scoreboard()
 		printable_scoreboard = "```This Week's Match Ups:\n"
 		for x in scoreboard:
-			printable_scoreboard += x.home_team.team_name +  " (" + str(x.home_team.wins) +  " - " + str(x.home_team.losses) + ") vs " + x.away_team.team_name +  " (" + str(x.away_team.wins) +  " - " + str(x.away_team.losses) + ")\n"
+			printable_scoreboard += x.home_team.team_name +  " (" + str(x.home_team.wins) +  " - " + str(x.home_team.losses) + ") vs " + x.away_team.team_name +  " (" + str(x.away_team.wins) +  " - " + str(x.away_team.losses) + ")\n\n"
 		printable_scoreboard += "```"
 		return printable_scoreboard
 	teams = {}
@@ -68,7 +68,7 @@ def RetrieveData(msg: str):
 
 		if msg == "Close Scores":
 			if abs(teamOneScore - teamTwoScore) <= 16 and (NotEveryonePlayed(teamTwoLineUp) or NotEveryonePlayed(teamOneLineUp)):
-				message += teamOne + " (" + str(teamOneScore) + ") vs " + teamTwo + " (" + str(teamTwoScore) + ") \n"
+				message += teamOne + " (" + str(teamOneScore) + ") vs " + teamTwo + " (" + str(teamTwoScore) + ") \n\n"
 		elif msg == "Trophies": 
 			teams[teamOne] = teamOneScore
 			teams[teamTwo] = teamTwoScore
@@ -89,7 +89,7 @@ def RetrieveData(msg: str):
 				blowoutscore = scorediff 
 
 		else:
-			message += teamOne + " (" + str(teamOneScore) + ") vs " + teamTwo + " (" + str(teamTwoScore) + ") \n"
+			message += teamOne + " (" + str(teamOneScore) + ") vs " + teamTwo + " (" + str(teamTwoScore) + ") \n\n"
 
 	if msg == "Trophies":
 
@@ -100,10 +100,10 @@ def RetrieveData(msg: str):
 		highestname = (list(teams.keys())[list(teams.values()).index(highestpoints)])
 
 
-		message += "Lowest Score: " + lowestname + " with " + str(lowestpoints) + " points\n"
-		message += "Highest Score: " + highestname + " with " + str(highestpoints) + " points\n"
-		message += closewinner + " barely beat " + closeloser + " by a margin of " + str(closescore) + " points\n"
-		message += blowoutwinner + " destroyed " + blowoutloser + " by " + str(blowoutscore) + " points\n"
+		message += "Lowest Score: " + lowestname + " with " + str(lowestpoints) + " points\n\n"
+		message += "Highest Score: " + highestname + " with " + str(highestpoints) + " points\n\n"
+		message += closewinner + " barely beat " + closeloser + " by a margin of " + str(closescore) + " points\n\n"
+		message += blowoutwinner + " destroyed " + blowoutloser + " by " + str(blowoutscore) + " points\n\n"
 
 	message = message + "```"
 
