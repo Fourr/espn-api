@@ -47,6 +47,13 @@ def RetrieveData(msg: str):
 	closescore = blowoutscore = 0
 	for x in league_scores:
 
+		if x.away_team == 0:
+			if msg =="Projections":
+				message += x.home_team.team_name + " (" + str(x.home_projected) + ") has a bye\n\n"
+			else:
+				message += x.home_team.team_name + " (" + str(x.home_score) + ") has a bye\n\n"
+			continue
+
 		teamOneLineUp = x.home_lineup
 		teamTwoLineUp = x.away_lineup
 
